@@ -3,12 +3,12 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE"); 
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
-header('Content-type: application/json');     
-  
-include_once "../class/ClassSingup.php";         
-
-  
-
+//header('Content-type: application/json');     
+ include_once('../class/ClassSingup.php');    
+ 
+ 
+   
+ 
 
 
 switch ( $_SERVER['REQUEST_METHOD'] ) {
@@ -21,15 +21,16 @@ switch ( $_SERVER['REQUEST_METHOD'] ) {
 		  
 		  
 	break;*/
-
- 	 
+ 
  	case 'POST':
 
  	$_POST = json_decode(file_get_contents('php://input'),true); 
 
- 	$singUp = new User($_POST); 
- 	$singUp->post();       
-
+ 	$singUp = new User($_POST);
+ 	  
+ 	$singUp->post();   
+  
+ 	  
  
  	break;
 	

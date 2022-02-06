@@ -4,14 +4,20 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE"); 
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
   
-include_once "../class/ClassLogin.php";         
+include_once "../class/ClassLogin.php";          
 $server = $_SERVER['REQUEST_METHOD'];
 
-
+ 
 switch ($server){
 
-	 
-  
+	case 'GET':
+
+	$token = file_get_contents('../tokes.json');
+
+	echo $token; 
+
+	break;	
+	    
  	  
  	case 'POST':
  	$_POST = json_decode(file_get_contents('php://input'),true);  
@@ -19,13 +25,11 @@ switch ($server){
 
  	//var_dump($_POST); 
 
- 	$logIn = new Logged($_POST); 
+ 	$logIn = new Logged($_POST);  
 
   	
- 	$logIn->verificar();  
+ 	$logIn->verificar(); 
 
- 	    
- 	//$logIn->post($_POST);  
 
  	break;  
 	
